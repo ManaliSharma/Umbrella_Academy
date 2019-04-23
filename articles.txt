@@ -1,0 +1,253 @@
+Automated recommendations are everywhere: Netflix, Amazon, YouTube, and more. The other day I asked my google assistant to play some music for me, I was shocked to see it playing my favourite tracks from youtube. Recommender systems learn about our unique interests and show the products or content they think we’ll like the best. Here, we can go through the basics of how to build your own recommender systems from one of the pioneers in the field. We will explore recommendation algorithms based on neighborhood-based collaborative filtering and more modern techniques, including matrix factorization and even deep learning with artificial neural networks. We will also take into account the real-world challenges of applying these algorithms at a large scale with real-world data, test algorithms and building your own neural networks using technologies like Amazon DSSTNE, AWS SageMaker, and TensorFlow.
+
+We have all heard about AI, machine learning and deep learning. Well, at this point we know what they mean, but, how would you go about applying some of this knowledge in reality? We will get a broad perspective of these artificial intelligence terms and how you could conceptually design a neural network.
+
+Now, let’s try the process of designing a neural network, what are inputs and outputs, neurons and synapses. Finally, we’ll apply this knowledge by designing a neural network putting pen to paper and challenge to design our own. So, if you’re ready to explore how to design a neural network, get your pen and paper ready and let’s get started.
+
+—?—?— -Now that we have a good understanding of what AI is, let’s explore what machine learning is specifically. As mentioned before, it is a branch of AI, but machine learning is the ability to learn without being explicitly programmed. Well, what does that mean? In essence, computers or CPUs are pretty dumb if we don’t program them. Without AI a computer usually works in a simple input to output paradigm. We input a command, either through programming or UI, open Word for example, and then the computer responds with opening the program, the output.
+
+Another example is your calculator, we input two times five, and the calculator outputs 10 as the response. So this simple input to output process is how computers used to work before AI started to permeate every piece of software. In a machine learning paradigm, there is another factor added to this input to output equation, the learning part. We have an input, learning model, and then the output. In this paradigm, the machine learns from your inputs and makes better output over time.
+
+Let me demonstrate with a simple Google search. If you were to type and make the mistake to type in the Google search’s query what is the biggest dessert in the world? But you meant desert. In a simple input to output paradigm, Google may show you the biggest cookie or cake in the world, but because Google is built with AI at its core, it will have inferred that when someone is asking for the biggest dessert in the world, they probably are looking for desert, not food.
+
+And this is where machine learning comes into play, over years of gathering data or training the ML model, or machine learning model, Google has learned that in most cases when someone is searching for biggest dessert in the world, they truly mean desert. And that is the important item of machine learning, it needs to be trained for its model to be efficient, accurate, or in other words intelligent. A machine learning paradigm needs to be fed with hundreds, thousands of more data sets to work.
+
+A great example is when DeepMind trained their machine learning computer to play Go, a Chinese board game. They spent hundreds of hours of feeding their machine all types of plays before the machine was able to predict what move to do next. So this is what machine learning is.
+
+—?—?Deep learning is one approach to doing machine learning, but one of the most popular ones. It was inspired by the structure of the brain, connecting many neurons to mimic the composition of the brain. Depth of learning is achieved by having each layer of neurons to focus on specific learning. For example, a set of neurons were to focus on handwriting recognition, therefore, the common-use term of neural networks. In summary, a neural network is made of an input layer, a hidden layer, and an output layer.
+
+Each layer includes multiple nodes, or neurons, and dictate the input, make inferences from those inputs in the hidden layers, and then outputs the results. The synapses are the connections in between all these neurons, pretty much like the brain. If we compare the typical way a computer thinks, we give them input and then an output is generated. But if you’d like to be able to determine how many days it will take to lose 40 pounds based on how many hours you sleep and how many hours you workout, you need a better way to handle this type of problem.
+
+This is where deep learning, or a neural network would be useful. So the input nodes would be the hours slept and spent in the gym, then inside of our neural network, we would have many nodes computing and having a weight value. And then pass on the value to another node until we get a result and pass it to the output layer, which would give us the number of pounds we could lose based on the inputs we fed to the network. Like machine learning, we would need to feed our neural network with data so it can learn from previous examples.
+
+And then through the weight applied to each node, the neural network would calculate the impact of each input nodes and render an output which would be an estimate of how many pounds we could lose based on the inputs we placed into the neural network.
+
+—?—?— As with any applications build, it is as important, if not more, to design or sketch your neural network or machine learning on paper before doing a single line of code, or start feeding your network with data. Consider that truly understanding your problem, the type of data you have access to, what type of neural network you’ll use to get the proper results will go a long way and potentially avoid many problems in being accurate down the road.
+
+First things first, if you feed your model with data as the first step, It’s the same when you start coding an application without having a good idea of the proper features you’d like to have in your application or designing and prototyping your application before going down the route of coding. It prevents many hours of painful regression after you’ve started developing your application or neural network.
+
+The importance of brainstorming or how do we think about the problem we want to solve, the proper data sets that will allow us to get efficient results, what are the weights of each node, is it better to leverage a forward or a backward propagation network, et cetera. You need to think about all these items before a single line of code will be written, or at least have a brief idea and this is what this post is about.
+
+Before we start designing our neural network let’s take an overview of the process. First and most importantly we’ll start with a problem. What is it that we want to answer in this neural network? Then we’ll continue by defining specifically what should be the output of this neural network. What is the most accurate data output to answer our problem? Next, we’ll explore datasets, which is how successful you’ll be at getting your answers. What you feed into your neural network or any AI base computational models will determine the success of our results.
+
+Then we’ll go over the neurons and synapses and how they impact each other with their own weights. Explore how the hidden layers will impact your final result. Finally, we’ll explore the type of neural networks, the RNN and CNN and what other types of networks you can leverage, which ones make the most sense for your specific needs, et cetera.
+
+—?—?— In machine learning, before we even start to decide which data sets will be fed into our network we need to determine first what is the problem or question we’d like to have answered. It needs to be clear and precise, so everything else we put into our AI model is aligned with this question. In machine learning concepts we also call this a label, or the Y variable, what we are trying to predict. In the spam filtering program, we would define this as spam or not spam.
+
+In an image recognition program, we would try to determine what is this image, you get the idea. So, as you start designing your neural network, make sure first you have a precise idea of what is the Y variable, or label, or the question you’re trying to answer. In complex neural networks, you might have multiple labels. For example, in an image recognition program, we would try to determine, is this image a bridge, a road, a sign, etc, these are multiple labels.
+
+For this entire post, I will continue with this example of an image recognition neural network so it helps us visualize all the steps. So, in this case, we’ll ask ourselves as the specific question, or Y variable, what are we seeing in this image. As human beings we know we are seeing a road, a sign, and a bridge, not a dog or a cat. So, the Y variables, or labels, we would need to answer are in this image do we have a bridge, a sign, a road, a cat, or a dog, and determine if they are in this image.
+
+This is an oversimplification of the labels or Y variables, but in an image recognition program, it would need to be trained to recognize the proper elements in it and none of the hundreds of thousands of other items that could be in this picture.
+
+—?—?—?—?Now that we have labels or the output that we seek in our program, what about the input? What do we feed our neural network with? Data sets are crucial in the success of your network as the more you feed it, the better the results. That’s what we call training our network. Like our brains, we need to train the network to recognize patterns to be able to make the right assumptions. When we were born, we weren’t able to talk right away. We had to learn and make associations between specific sounds meaning specific things.
+
+A neural network works pretty much in the same way. We feed it with data sets, and over time, it learns to recognize specific patterns that mean specific things. And because computers think in data, that’s what we need to feed it with. So if you feed a computer with intangible things like an image, it needs to be converted into data. So if we look at our image example, it would need to be converted into values, and typically images would be converted into pixel values.
+
+pixels being converted to data
+So each pixel would be a value of whatever. For example, the pixels here show numbers that represent the color of that pixel. So as we feed the neural networks with thousands or millions of images, over time the computer will recognize that when you have a block of thousands of pixels in a specific pattern, for example, lots of grey with some yellow or white close together, the probability of it being a road is at 80% versus a cat or a dog.
+
+Therefore, the importance of feeding the neural network with thousands or millions of data sets, so it can learn to predict better than a specific image that has a bridge or a road versus a cat or a dog.
+
+—?—?—-The neurons and synapses are what will make your machine successful or not in achieving the accurate responses to your questions. Each neuron in a network has an impact on the result and the impact will be determined by the training of the network. The synapses are the connections between neurons. So, if you ever looked into medical references, this is like a brain. In neural network or machine learning concepts, each neuron is a feature.
+
+A feature is simply an item that impacts the evaluation of the dataset towards the end result. It is also a machine learning formula considered the X factor. So here’s . an example to make things a bit clearer. Consider the email spam example, their features would be sender’s address, time of day received, words in the subject, words in the email, an email containing specific words. Each of these would be considered a feature and over time have a weight on how it impacts the email as being spam or not.
+
+So for example, an email containing the word sale could have a bigger impact on an email being spam over the time an email was sent. And therefore have a bigger impact on the probability of an email being spam when our network qualifies them as spam or not. Now let’s introduce a Model. The model is the relationship in between our labels, Y, and the features which are X.
+
+So the model is the entire formula that is being trained to become better at learning if the X features represent a Y label or not. So if we look at our spam model, all the X features will have an impact on Y, if it is spam or not. The same for the image recognition program. The Y labels would be cat, dog, road, sign, bridge, and the X would be the combination of pixel colors, and if their combination is a probability of being any labels or the Ys.
+
+—?—?Let us familiarise with another concept of a neural network, forward and backward propagation. They are mysterious terms that translate the direction, ie, does the network learn only in a forward manner, or from the results too. So if we take the forward propagation first. The network would only learn from the inputs or data sets it gets, and the results would reflect this approach. They are also called feet forward, or convolutional neural network, or CNN. They are typically used in pattern recognition, like the image recognition example we’ve been using since the beginning.
+
+CNN
+So in these type of scenarios, we’d feed data and train our network in a forward motion and over time the network would get better at recognizing patterns in the data we feed it and be better at predicting if an image is more of a dog or a road.
+
+Next, you have backward propagation, which is also called a recurrent neural network, or RNNs. In this type of network, the network trains itself both ways, in a loop manner.
+
+RNN
+It would not only learn from the data sets we feed it, but also from the results and back. This is typically a great approach for speech or handwriting recognition and is applied to tools like Google Assistant or Siri. This is especially useful when a network needs to learn from errors or mistakes provided in the results. So needless to say that backwards propagation could be useful in most situations but might be a bit over the top for certain situations. The key difference between a CNN and an RNN is that the Recurrent network has an index of time to it.
+
+Okay, now that we’ve explored some theory around neural networks, let’s brainstorm our own. I’d create my own neural network, so if there is a specific problem your company is facing or a type of information you’d like to have a neural network delivering to you, then apart from coding, you should also brainstorm.
+
+Let’s think of a quick scenario, A company has created a social network around its products on their website, and anyone can register and post product comments or reviews in this section, but as of late, this particular section has become a ground for bad behaviour where people are saying profanities to each other. So in this first step of the challenge, I would determine what is the problem and what would be the labels we should assign to our neural network.
+
+So we have a situation where a social section of our products where profanities or bad language is used. We need to be able to use neural networks to clean this. So our problem or the Y output label is fairly simple. Does the text entered contain profane words or not? As we enter data into our network, it will learn to determine if Y is true or not. Therefore, is text entered into the review passing our filters or not? Okay, so now that we have our Y label defined, next comes the X or the features of the network.
+
+We also want to determine if this neural network is better with a forward or backward propagation.
+
+The final solution was to determine which features, or X, or what exactly would impact the Y label of the problem. For the features or X variables, I define the following that would impact my Y label, is this text using profanities or not, use of specific words, a combination of a few words, use of specific emojis and so on, this list could get more exhaustive. And as we train our model to define these types of words, emojis, and combination of words, as profane words are not, it will start to filter out the bad comments or reviews.
+
+So which type of network would I use in this case? I think both CNN or RNN might be efficient in this case, but if you’d like the neural network to learn from the results, and loop through the layers to have better results, then yes, the recurrent neural network might be a great choice.
+
+The next thing we should look at is the Long Short Term Memory, RNN.
+
+This is the advanced version of a RNN, where a small memory is added to it.
+
+
+
+
+
+
+
+
+The fact that this article is trending is a bad thing. It is a sign that we are inching closer to another AI winter.
+
+The author David Weinberger’s central thesis is:
+
+Humans endeavor to gain an understanding of complex systems. However, the predictions we make based on “human understanding” is not as accurate as those of AI, which don’t truly understand anything.
+However, AI’s predictions are more accurate than predictions based on human understanding.
+Therefore, we should abandon our pursuit of understanding, and focus on building the AI that can make the decisions for us.
+Handing over the reigns to predictive AI will usher in the next stage of human evolution.
+The fourth point seems like more of a conceit for a transhumanist sci-fi novel than an argument and Weinberger doesn’t provide support for it, so I focus here on deconstructing the first three points.
+
+Prediction without understanding cannot advance science
+To effectively contain a civilization’s development and disarm it across such a long span of time, there is only one way: kill its science.?—?Cixin Liu, The Three Body Problem
+I take it for granted that we want science to advance for many reasons, such as improving medicine or our ability to make useful things. Good engineering practice takes you from the bow and arrow to the crossbow. Science takes you from the bow and arrow to the cruise missile.
+
+From Weinberger’s article:
+
+Deep learning’s algorithms work because they capture, better than any human can, the complexity, fluidity, and even the beauty of a universe in which everything affects everything else, all at once. We’re beginning to accept that the true complexity of the world far outstrips the laws and models we devise to explain it. We need to give up our insistence on always understanding our world and how things happen in it.
+But insisting on understanding our world is how science advances.
+
+“Understanding” in this context means a model?—?defined as a set of assumptions about how things within a specific problem domain work, expressed in logical form. These assumptions include the core components of the system, how they affect one another, and what the effect of changing one variable is on another variable.
+
+You’ve probably heard the expression by statistician George Box, “all models are wrong, some are useful.” We know for example that our current model of the systems biology is incomplete and in many ways wrong, but it has provided useful life-saving drugs and gene therapies. The advancement of science is a process of new models displacing older ones because the new ones can explain empirical data in ways the old ones cannot (See Thomas Kuhn’s Structure and Theory of Scientific Revolutions for a deep dive into this argument).
+
+Weinberger is essentially arguing in favor of the model-blind side of the model-blind/model-based dichotomy. While model-based methods predict empirical data under the constraints of a model, model-blind methods shrug off those constraints and focus on building a predictive algorithm with optimal accuracy. These methods commonly exceed model-based methods in predictive accuracy.
+
+But more accurate prediction is not how science advances. Copernicus’s heliocentric model of the solar system did not predict the movements of objects in the sky as well as the geocentric Ptolemaic model that preceded it. But it was a “less wrong” model and paved the way for Keppler’s even better model, and from there, Google maps.
+
+Cutting-edge predictive machine learning tools that as Weinberger says predict well but lack understanding, such as deep neural nets, work by being amazing at finding complex correlations in high dimensional space. Everyone learns in stats 101 that correlation alone (no matter how nuanced) does not imply causation, where causation is an assumption about how components in a system affect one another. You need understanding for that.
+
+Predictive accuracy is not the only performance measure we care about
+From Weinberger’s article:
+
+Deep Patient was not only able to diagnose the likelihood of individual patients developing particular diseases, it was in some instances more accurate than human physicians, including about some diseases that until now have utterly defied predictability.
+But prediction isn’t everything. I recently tweeted:
+
+
+90% sounds pretty good! Perhaps, I could go a step further and train a deep net on the sounds emitted by the barrel as it is spinning, right before I slam it into the receiver, and maybe get 95% accuracy.
+
+My point is obvious; predictive accuracy is not the only thing that matters in decision making. Very accurate prediction engines will still be wrong sometimes, and the consequences of being wrong can be catastrophic. Statistician and ML expert Michael Jordan gave a personal example of an incorrect prediction based on an ultrasound that his unborn infant would have an intellectual disability. This prediction led the doctor to recommend a risky medical procedure. Getting this prediction leads many would-be parents to decide to terminate a pregnancy.
+
+Medical diagnosis is a domain where you care more about the risk of a false positive than predictive accuracy. In some fields, you might care more about the risk of a false negative, such as if your job were to stop terrorists from getting on planes, or stopping hackers from accessing valuable secrets or letting through that one rogue trade that will blow up your investment bank.
+
+Decisions based on an algorithm’s highly accurate predictions in a complex system can lead to catastrophe in the rare instances it gets the prediction wrong.
+
+In practice we can often address such cases by adjusting the decision threshold, toggling between being more sensitive or more specific. But this does not solve cases of black swans, where events with severe consequences are too rare to have appeared in the data used to train the prediction algorithm.
+
+
+Algorithmic bias. Another prediction risk without a straightforward fix is that of algorithmic bias. A 2016 piece by ProPublica first highlighted the problem of racial bias in machine learning algorithms used in the context of criminal justice, specifically in predicting whether or not an individual will commit future offenses and basing sentences or parole decisions on that prediction. More recently Amazon came under scrutiny for selling facial recognition services to police departments; the tech was subsequently shown to have a racial bias. Of course, the problem of algorithmic bias extends far beyond race.
+
+Even when these criminal justice algorithms don’t explicitly use race as a feature, they can engineer such features. When a job application doesn’t directly ask for race, a race proxy such as a name (e.g., Daniel vs. Darnell) could still indicate race to a hiring manager. These prediction algorithms can also use such proxies, except these proxies can be encoded as complex relationships between nodes in a deep neural network, such that they are too complex for humans to detect or understand.
+
+Some would argue that predicting higher crime risk among blacks is the logical outcome of higher crime rates among blacks. Rather than argue about race politics and interpretation of crime statistics, I’d point out that accurate prediction is entirely beside the point. Justice is our performance metric! Justice is a core principle of our criminal justice system, and justice means judging people according to factors they can control and not by factors they cannot, such as their race, gender, zip code, whether or not they have incarcerated family members, etc.
+
+If the only metric that mattered when employing machine learning in crime and punishment were predictive accuracy, we’d be living in a Minority Report style dystopia where babies born to low-income single moms get probation trackers attached at birth.
+When our models predict but don’t understand, we make bad decisions
+From Weinberger’s article:
+
+We humans have long been under the impression that if we can just understand the immutable laws of how things happen, we’ll be able to perfectly predict, plan for, and manage the future. If we know how weather happens, weather reports can tell us whether to take an umbrella to work.
+Let’s follow Weinberger’s advice and abandon our human attempts to understand the weather and instead train a deep neural network on historical weather data, and use it to predict each morning whether or not it is going to rain that day. At the end of each day, we feed the weather data for that day into the algorithm, so it updates its weights such that they stay attuned to the present climate.
+
+Suppose we use this algorithm’s prediction to decide whether or not to carry an umbrella. In the previous section, I argued that this understanding-free highly accurate prediction engine might kill us when a category five storm hits. But if we ignore that, then Weinberger’s has presented an excellent ML case study for his argument.
+
+Now let’s consider a similar case study in business. Instead of weather, we will forecast revenue on your e-commerce website in a given month, given internal financial information and market conditions from the previous month. If the deep net predicts revenue will drop off next month (a rainy day prediction), then we will run an advertising campaign to boost demand (carry an umbrella).
+
+However, in the first case, the weather is not affected by whether or not we carry an umbrella. In the second case, future revenues are affected by whether or not we run an ad campaign. Those effects are fed back into the algorithm through that future revenue data, which affects the prediction, which affects future decisions, and so on, creating a feedback loop that will cause suboptimal decision making.
+
+The solution to this problem is to build a predictive algorithm with a model of cause and effect so that it can adjust for cause and effect when it makes predictions.
+
+The stakes can be much higher than the loss of revenue. Several extensive observational studies looked at postmenopausal women’s medical records and discovered that hormone use (estrogen and progestin) predicted a decrease in coronary heart disease (CHD). Based on this, doctors started prescribing hormone supplementation to postmenopausal women as a means of preventing CHD.
+
+However, when the Women’s Health Initiative performed a randomized trial, they discovered that women who supplemented hormones had an increased incidence of CHD.
+
+Why did this happen? Here’s a guess. Maybe some of the postmenopausal women in these initial studies were well off. They had the money to sign up for expensive exercise classes, like CrossFit and indoor rock climbing. They heard advice from their affluent gym buddies to mitigate the effects of menopause with hormone supplementation. Plus, all that exercise was strengthening their hearts, offsetting whatever damage the hormones were doing.
+
+Or maybe, instead of affluence and overly intensive exercise, it was some other unobserved set of causes, what statisticians call confounders. The randomization in the trial eliminated the influence of these confounders, demonstrating the actual effect of hormone supplementation. The nature of the confounders is beside the point. The point is that in the presence of confounders, going from prediction straight to policy is a bad idea. The cost, in this case, was in human lives.
+
+But in the era of big data couldn’t we measure everything that matters so there won’t be any confounders? No. The processes that generate big data don’t care about the decisions you plan to make unless you were the one who designed the processes.
+
+The things that matter that you failed to measure in the data don’t poke you on the shoulder and tell you they are there. They just go on confounding in silence.
+The solution is not to give up on understanding, but to build AI that understands
+Weinberger conflates AI and highly accurate black-box prediction without understanding. The fact is that there are machine learning algorithms that make their own assumptions about the cause-effect relationships within a domain. In other words, they try to understand. These algorithms can learn these relationships from passive observation of data (e.g.; the PC algorithm), and they can they also try intervening in the data generating process to get a more direct picture of what affects what. In this manner, they behave like a human scientist.
+
+I am not disparaging deep learning. The most cutting edge of this class of algorithms indeed employ deep neural network architectures, as was apparent at the 2018 causal learning workshop at NeurIPS, where deep learning experts such as Yoshia Bengio were in attendance.
+
+Yes, complex systems are hard to model. But giving up on understanding and letting dumb AI make the tough decisions would be a disaster. Instead, we should focus on building AI that understands.
+
+
+
+
+
+
+
+
+I still remember the day 1 of my very first job fifteen years ago. I had just finished my graduate studies and joined a global investment bank as an analyst. On my first day, I kept straightening my tie and trying to remember everything that I had studied. Meanwhile, deep down, I wondered if I was good enough for the corporate world. Sensing my anxiety, my boss smiled and said:
+
+“Don’t worry! The only thing that you need to know is the regression modeling!”
+
+I remember thinking myself, “I got this!”. I knew regression modeling; both linear and logistic regression. My boss was right. In my tenure, I exclusively built regression-based statistical models. I wasn’t alone. In fact, at that time, regression modeling was the undisputed queen of predictive analytics. Fast forward fifteen years, the era of regression modeling is over. The old queen has passed. Long live the new queen with a funky name; XGBoost or Extreme Gradient Boosting!
+
+What is XGBoost?
+XGBoost is a decision-tree-based ensemble Machine Learning algorithm that uses a gradient boosting framework. In prediction problems involving unstructured data (images, text, etc.) artificial neural networks tend to outperform all other algorithms or frameworks. However, when it comes to small-to-medium structured/tabular data, decision tree based algorithms are considered best-in-class right now. Please see the chart below for the evolution of tree-based algorithms over the years.
+
+
+Evolution of XGBoost Algorithm from Decision Trees
+XGBoost algorithm was developed as a research project at the University of Washington. Tianqi Chen and Carlos Guestrin presented their paper at SIGKDD Conference in 2016 and caught the Machine Learning world by fire. Since its introduction, this algorithm has not only been credited with winning numerous Kaggle competitions but also for being the driving force under the hood for several cutting-edge industry applications. As a result, there is a strong community of data scientists contributing to the XGBoost open source projects with ~350 contributors and ~3,600 commits on GitHub. The algorithm differentiates itself in the following ways:
+
+A wide range of applications: Can be used to solve regression, classification, ranking, and user-defined prediction problems.
+Portability: Runs smoothly on Windows, Linux, and OS X.
+Languages: Supports all major programming languages including C++, Python, R, Java, Scala, and Julia.
+Cloud Integration: Supports AWS, Azure, and Yarn clusters and works well with Flink, Spark, and other ecosystems.
+How to build an intuition for XGBoost?
+Decision trees, in their simplest form, are easy-to-visualize and fairly interpretable algorithms but building intuition for the next-generation of tree-based algorithms can be a bit tricky. See below for a simple analogy to better understand the evolution of tree-based algorithms.
+
+
+Photo by rawpixel on Unsplash
+Imagine that you are a hiring manager interviewing several candidates with excellent qualifications. Each step of the evolution of tree-based algorithms can be viewed as a version of the interview process.
+
+Decision Tree: Every hiring manager has a set of criteria such as education level, number of years of experience, interview performance. A decision tree is analogous to a hiring manager interviewing candidates based on his or her own criteria.
+Bagging: Now imagine instead of a single interviewer, now there is an interview panel where each interviewer has a vote. Bagging or bootstrap aggregating involves combining inputs from all interviewers for the final decision through a democratic voting process.
+Random Forest: It is a bagging-based algorithm with a key difference wherein only a subset of features is selected at random. In other words, every interviewer will only test the interviewee on certain randomly selected qualifications (e.g. a technical interview for testing programming skills and a behavioral interview for evaluating non-technical skills).
+Boosting: This is an alternative approach where each interviewer alters the evaluation criteria based on feedback from the previous interviewer. This ‘boosts’ the efficiency of the interview process by deploying a more dynamic evaluation process.
+Gradient Boosting: A special case of boosting where errors are minimized by gradient descent algorithm e.g. the strategy consulting firms leverage by using case interviews to weed out less qualified candidates.
+XGBoost: Think of XGBoost as gradient boosting on ‘steroids’ (well it is called ‘Extreme Gradient Boosting’ for a reason!). It is a perfect combination of software and hardware optimization techniques to yield superior results using less computing resources in the shortest amount of time.
+Why does XGBoost perform so well?
+XGBoost and Gradient Boosting Machines (GBMs) are both ensemble tree methods that apply the principle of boosting weak learners (CARTs generally) using the gradient descent architecture. However, XGBoost improves upon the base GBM framework through systems optimization and algorithmic enhancements.
+
+
+How XGBoost optimizes standard GBM algorithm
+System Optimization:
+
+Parallelization: XGBoost approaches the process of sequential tree building using parallelized implementation. This is possible due to the interchangeable nature of loops used for building base learners; the outer loop that enumerates the leaf nodes of a tree, and the second inner loop that calculates the features. This nesting of loops limits parallelization because without completing the inner loop (more computationally demanding of the two), the outer loop cannot be started. Therefore, to improve run time, the order of loops is interchanged using initialization through a global scan of all instances and sorting using parallel threads. This switch improves algorithmic performance by offsetting any parallelization overheads in computation.
+Tree Pruning: The stopping criterion for tree splitting within GBM framework is greedy in nature and depends on the negative loss criterion at the point of split. XGBoost uses ‘max_depth’ parameter as specified instead of criterion first, and starts pruning trees backward. This ‘depth-first’ approach improves computational performance significantly.
+Hardware Optimization: This algorithm has been designed to make efficient use of hardware resources. This is accomplished by cache awareness by allocating internal buffers in each thread to store gradient statistics. Further enhancements such as ‘out-of-core’ computing optimize available disk space while handling big data-frames that do not fit into memory.
+Algorithmic Enhancements:
+
+Regularization: It penalizes more complex models through both LASSO (L1) and Ridge (L2) regularization to prevent overfitting.
+Sparsity Awareness: XGBoost naturally admits sparse features for inputs by automatically ‘learning’ best missing value depending on training loss and handles different types of sparsity patterns in the data more efficiently.
+Weighted Quantile Sketch: XGBoost employs the distributed weighted Quantile Sketch algorithm to effectively find the optimal split points among weighted datasets.
+Cross-validation: The algorithm comes with built-in cross-validation method at each iteration, taking away the need to explicitly program this search and to specify the exact number of boosting iterations required in a single run.
+Where is the proof?
+We used Scikit-learn’s ‘Make_Classification’ data package to create a random sample of 1 million data points with 20 features (2 informative and 2 redundant). We tested several algorithms such as Logistic Regression, Random Forest, standard Gradient Boosting, and XGBoost.
+
+
+XGBoost vs. Other ML Algorithms using SKLearn’s Make_Classification Dataset
+As demonstrated in the chart above, XGBoost model has the best combination of prediction performance and processing time compared to other algorithms. Other rigorous benchmarking studies have produced similar results. No wonder XGBoost is widely used in recent Data Science competitions.
+
+“When in doubt, use XGBoost”?—?Owen Zhang, Winner of Avito Context Ad Click Prediction competition on Kaggle
+So should we use just XGBoost all the time?
+When it comes to Machine Learning (or even life for that matter), there is no free lunch. As Data Scientists, we must test all possible algorithms for data at hand to identify the champion algorithm. Besides, picking the right algorithm is not enough. We must also choose the right configuration of the algorithm for a dataset by tuning the hyper-parameters. Furthermore, there are several other considerations for choosing the winning algorithm such as computational complexity, explainability, and ease of implementation. This is exactly the point where Machine Learning starts drifting away from science towards art, but honestly, that’s where the magic happens!
+
+What does the future hold?
+Machine Learning is a very active research area and already there are several viable alternatives to XGBoost. Microsoft Research recently released LightGBM framework for gradient boosting that shows great potential. CatBoost developed by Yandex Technology has been delivering impressive bench-marking results. It is a matter of time when we have a better model framework that beats XGBoost in terms of prediction performance, flexibility, explanability, and pragmatism. However, until a time when a strong challenger comes along, XGBoost will continue to reign over the Machine Learning world!
+
+
+
+
+
+
+
+
+

@@ -22,6 +22,6 @@ Social Butterfly is a social media engagement software project which is a part o
 - Umbrella_Academy_INFO6105_Collecting_Metadata
 - Umbrella_Academy_INFO6105_LSTM_Model
 - Umbrella_Academy_INFO6105_Sentiment_Analysis
-  > Images (All images used in project)
-  > JSON and CSV Files (All the scraped and generated CSV and JSON files)
-  > LSTM Files 
+  > - Images (All images used in project)
+  > - JSON and CSV Files (All the scraped and generated CSV and JSON files)
+  > - LSTM Files 

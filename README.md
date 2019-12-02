@@ -16,18 +16,29 @@ Social Butterfly is a social media engagement software project which is a part o
 - Plot.ly
 
 ## Folder Structure
-- BigData_Scala_Cat_Dog_Duck
-> README.md
-> spark_trial_s3
-> Classification
- > -
-> Object_Detection
-> ObjectDetection.pptx
 
+- Umbrella_Academy_INFO6105_Project
+- README.md
+> Umbrella_Academy_INFO6105_Project
+- Umbrella_Academy_INFO6105_Collecting_Metadata
+- Umbrella_Academy_INFO6105_LSTM_Model
+- Umbrella_Academy_INFO6105_Sentiment_Analysis
+  > - Images (All images used in project)
+  > - JSON and CSV Files (All the scraped and generated CSV and JSON files)
+  > - LSTM Files 
+Umbrella_Academy_INFO6105_Project
+README.md
+Umbrella_Academy_INFO6105_Project
 
-## How to Run
-- Clone the repository in your local disk.
-- Refer the folder structure mentioned above, and open the folder BigData_Scala_Cat_Dog_Duck".
-- This is the master project and it links to all the different parts of the project.
-- Please make sure that the libraries mentioned above are all installed
-
+Umbrella_Academy_INFO6105_Collecting_Metadata
+Umbrella_Academy_INFO6105_LSTM_Model
+Umbrella_Academy_INFO6105_Sentiment_Analysis
+Images (All images used in project)
+JSON and CSV Files (All the scraped and generated CSV and JSON files)
+LSTM Files
+How to Run
+Clone the repository in your local disk.
+Refer the folder structure mentioned above, and open the file "Umbrella_Academy_INFO6105_Project.ipynb".
+This is the master notebook and it links to all the different parts of the project.
+Please make sure that the libraries mentioned above are all installed
+You also need to have a twitter developer account to be able to stream data, we have uploaded the data that we've streamed for reference purpose.
